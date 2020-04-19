@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>ULCANS | Configuration Calculator</title>
+		<!-- Bulma -->
+		<link rel="stylesheet" href="../../css/bulma.min.css">
+		<!-- CSS -->
+		<link rel="stylesheet" href="../../css/style.css">
+		<!-- Font Awesome -->
+		<script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
+		<!-- JS -->
+		<script async src="../../js/jquery-3.4.1.min.js"></script>
+		<script defer src="../../js/papaparse.min.js"></script>
+		<script defer src="../../js/navbar.js"></script>
+		<script defer src="../../js/clear.js"></script>
+		<!-- CSV processing and Database -->
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	</head>
+
+	<body>
+		<nav class="navbar" role="navigation" aria-label="main navigation">
+			<div class="container">
+				<div class="navbar-brand">
+					<p class="navbar-item">
+						<img src="../../images/icons/fusa-logo.png" alt="Fibrotex company logo" height="30">
+					</p>
+
+					<a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false"
+					data-target="navbarBasicExample">
+						<span aria-hidden="true"></span>
+						<span aria-hidden="true"></span>
+						<span aria-hidden="true"></span>
+					</a>
+				</div>
+
+				<div id="navbarBasicExample" class="navbar-menu">
+					<div class="navbar-start">
+						<a class="navbar-item" href="../menu.html">Home</a>
+
+						<div class="navbar-item has-dropdown is-hoverable">
+							<a class="navbar-link is-active" href="#">Configuration</a>
+
+							<div class="navbar-dropdown">
+								<a class="navbar-item" href="../config/typ_configs.html">Typical Configurations</a>
+								<a class="navbar-item is-active" href="../config/config_calculator.html">Configuration Calculator</a>
+								<a class="navbar-item" href="../config/config_list.html">Configuration List</a>
+							</div>
+						</div>
+
+						<a class="navbar-item" href="../setup.html">Erect</a>
+						<a class="navbar-item" href="../tear_down.html">Strike</a>
+						<a class="navbar-item" href="../maintenance.html">Maintenance</a>
+
+						<div class="navbar-item has-dropdown is-hoverable">
+							<a class="navbar-link">More</a>
+
+							<div class="navbar-dropdown">
+								<a class="navbar-item" href="../equipment.html">Equipment Description</a>
+								<a class="navbar-item" href="../critical_considerations.html">Critical Considerations</a>
+								<a class="navbar-item" href="../references.html">References</a>
+								<a class="dropdown-divider"></a>
+								<a class="navbar-item" href="../about.html">About</a>
+							</div>
+						</div>
+					</div>
+
+					<div class="navbar-end">
+						<div class="navbar-item">
+							<p class="navbar-item has-text-black"><em>ULCANS Increment 1</em></p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</nav>
+
+		<section class="section">
+			<div class="container">
+
+				<h1 class="subtitle has-text-weight-bold is-2 has-text-centered">CONFIGURATION CALCULACTOR</h1>
+				<br>
+				
+				<div class="rows">
+					<div class="content is-medium">
+						<p class="has-text-centered">
+							<b>NOTE:</b> An ULCANS system consists of one hexagon screen and one rhombic screen.
+						</p>
+						<p>
+							<b style="margin-left: 10px">1.</b> Measure Height, Width, and Length (in feet).
+						</p>
+						<p>
+							<b style="margin-left: 10px">2.</b> Input dimensions and press Calculate to view results. Press clear to reset.
+						</p>
+					</div>
+					<div class="field" style="size: landscape">
+						<form>
+							<p>Height</p>
+							<input type="number" id="H">
+							<p>Width</p>
+							<input type="number" id="W">
+							<p >Length</p>
+							<input  type="number" id="L">						
+							<br>
+							<br>
+							<div>
+								<button class="button is-dark" type="button" name="load_data" id="load_data">Calculate</button>
+								<button class="button is-dark" type="reset" id="reset" value="Reset" onclick="f()">Clear</button>
+							</div>
+						</form>
+					</div>
+
+					<div align="center" class="content is-medium" id="results">
+					</div>
+				</div>
+			</div>
+		</section>
+	</body>
+</html>
+
+<script>
+	$(document).ready(function(){
+		$('#load_data').click(function(){
+			$.ajax({
+				url:"db.csv",
+				dataType:"text",
+ 				success:function(data)
+				{
+					/*Here I create my variables that require me to either
+					* get things from the HTMl page or getting a file
+					* or for creating a table*/
+					let L = parseInt(document.querySelector("#L").value);
+					let W = parseInt(document.querySelector("#W").value);
+					let H = parseInt(document.querySelector("#H").value);
+					let database = data.split(/\r?\n|\r/);
+					
+					/*
+						Here I make sure digits are positive
+					*/
+					let final_results = '<div class="content is-large">';
+					final_results += '<p>';
+					if ((L < 0) || (W < 0) || (H < 0))
+					{
+						
+						final_results += "Please Enter vaild numbers";
+						final_results += '</p>';
+						final_results += '</div>';
+					}
+					else 
+					{
+						/*Here I create local variables like A and B...*/
+						let A;
+						let B;
+						let x;
+						let y;
+
+						/*Here I perform the calculations for A and B...*/
+						A = 2*(H+2)+W+5;
+						B = 2*(H+2)+L+5;
+
+						/*Here I create my coordinates for X and Y,
+						* yea this Code is kinda redundant and I could have
+						* just used the A and B values but..
+						*  ¯\_(ツ)_/¯ ....*/
+						x = A;
+						y = B;
+
+						/*since the width and the Length of the data are the same
+						* I create a 2D array so that I can easily access the data like
+						* on an X and Y graph*/
+						let csv_data = new Array(database.length);
+						for (let i = 0; i < database.length; i++)
+						{
+							csv_data[i] = new Array(database.length)
+						}
+
+						/*Here I now store the data in the CSV file in a two-dimensional array.
+						* This way, using the coordinates, I can retrieve the data*/
+						for(let length = 0; length<database.length; length++)
+						{
+							let cell_data = database[length].split(",");
+							for(let width=0; width<cell_data.length; width++)
+							{
+								csv_data[length][width] = cell_data[width];
+							}
+
+						}
+
+						/*Here I do a couple more checks to make sure the X and Y
+						* are not greater than 181 which is the max Length and width
+						* of the file. I also prep the final_results variable so that the
+						* AJAX thing can do what it does..i only know so much about it.
+						* I can't really give technical details...yet.*/
+						
+						if (x > 180 && y > 180)
+						{
+							final_results += "Please Consult Table on Typical ULCANS Configurations.\nCustom configuration may be necessary.";
+							final_results += '</p>';
+							final_results += '</div>';
+						}
+						else
+						{
+							final_results += "The screen size number you need is: ";
+							final_results += '<b>';
+							final_results += csv_data[x][y];
+							final_results += '</b>';
+							final_results += '</p>';
+							final_results += '</div>';
+						}
+					}
+					
+					$('#results').html(final_results);
+				}
+			});
+		});
+
+	});
+</script>

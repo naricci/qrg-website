@@ -1,0 +1,47 @@
+html {
+    background-color: tan;
+}
+
+body {
+    color: #000000;
+}
+
+ul {
+    list-style-type:square;
+    padding-left: 40px;
+}
+
+table, thead {
+    border: 5px solid grey;
+    border-collapse: collapse;
+}
+
+p.navbar-item.has-text-black {
+    font-weight: bolder;
+}
+
+.button.is-rounded {
+    background-color: #000000;
+    font-weight: bold;
+    height: 75px;
+    width: 250px;
+}
+
+.menu-grid {
+    margin-top: auto;
+    margin-bottom: auto;
+}
+
+.menu-icon {
+    width: 120px;
+}
+
+.subtitle {
+    color: #000000;
+}
+
+.thead { text-align: center; vertical-align: middle; color: white; }
+
+#support-pole {
+    height: 500px;
+}
