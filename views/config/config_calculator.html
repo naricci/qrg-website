@@ -87,32 +87,57 @@
 						<p class="has-text-centered">
 							<b>NOTE:</b> An ULCANS system consists of one hexagon screen and one rhombic screen.
 						</p>
-						<p>
-							<b style="margin-left: 10px">1.</b> Measure Height, Width, and Length (in feet).
-						</p>
-						<p>
-							<b style="margin-left: 10px">2.</b> Input dimensions and press Calculate to view results. Press clear to reset.
-						</p>
-					</div>
-					<div class="field" style="size: landscape">
-						<form>
-							<p>Height</p>
-							<input type="number" id="H">
-							<p>Width</p>
-							<input type="number" id="W">
-							<p >Length</p>
-							<input  type="number" id="L">						
-							<br>
-							<br>
-							<div>
-								<button class="button is-dark" type="button" name="load_data" id="load_data">Calculate</button>
-								<button class="button is-dark" type="reset" id="reset" value="Reset" onclick="f()">Clear</button>
-							</div>
-						</form>
+						<ol>
+							<li>
+								Measure Height, Width, and Length (in feet).
+							</li>
+							<li>
+								Input dimensions and press Calculate to view results. Press Clear to reset.
+							</li>
+						</ol>
 					</div>
 
-					<div align="center" class="content is-medium" id="results">
+					<br>
+
+					<div class="field is-horizontal">
+						<div class="field-body">
+							<div class="field">
+								<label class="label has-text-centered">Height</label>
+								<p class="control is-expanded">
+									<input class="input is-medium has-text-centered" type="number" id="H" placeholder="Height">
+								</p>
+							</div>
+
+							<div class="field">
+								<label class="label has-text-centered">Width</label>
+								<p class="control is-expanded">
+									<input class="input is-medium has-text-centered" type="number" id="W" placeholder="Width">
+								</p>
+							</div>
+
+							<div class="field">
+								<label class="label has-text-centered">Length</label>
+								<p class="control is-expanded">
+									<input class="input is-medium has-text-centered" type="number" id="L" placeholder="Length">
+								</p>	
+							</div>
+						</div>	
 					</div>
+					
+					<br>
+
+					<div class="field is-grouped">
+						<div class="control">
+							<button class="button is-dark" type="button" name="load_data" id="load_data">Calculate</button>
+						</div>
+						<div class="control">
+							<button class="button is-danger" type="reset" id="reset" value="Reset" onclick="f()">Clear</button>
+						</div>
+					</div>
+
+					<br><br>
+
+					<div align="center" class="content is-medium" id="results"></div>
 				</div>
 			</div>
 		</section>
@@ -139,11 +164,11 @@
 						Here I make sure digits are positive
 					*/
 					let final_results = '<div class="content is-large">';
-					final_results += '<p>';
+					final_results += '<p class="has-text-danger">';
 					if ((L < 0) || (W < 0) || (H < 0))
 					{
 						
-						final_results += "Please Enter vaild numbers";
+						final_results += "Please enter vaild numbers.";
 						final_results += '</p>';
 						final_results += '</div>';
 					}
@@ -195,13 +220,13 @@
 						
 						if (x > 180 && y > 180)
 						{
-							final_results += "Please Consult Table on Typical ULCANS Configurations.\nCustom configuration may be necessary.";
+							final_results += "Please consult table in the <a href='typ_configs'> Typical Configurations</a> section.\nCustom configuration may be necessary.";
 							final_results += '</p>';
 							final_results += '</div>';
 						}
 						else
 						{
-							final_results += "The screen size number you need is: ";
+							final_results += "Screen systems required:  ";
 							final_results += '<b>';
 							final_results += csv_data[x][y];
 							final_results += '</b>';
