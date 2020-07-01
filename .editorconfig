@@ -7,7 +7,7 @@ root = true
 # Unix-style newlines with a newline ending every file
 [*]
 end_of_line = lf
-insert_final_newline = true
+insert_final_newline = false
 
 [*.{js,json}]
 charset = utf-8
@@ -23,3 +23,12 @@ indent_style = tab
 indent_size = tab
 tab_width = 4
 quote_type = double
+trim_trailing_whitespace = true
+
+[*.{css}]
+charset = utf-8
+indent_style = tab
+indent_size = 2
+quote_type = double
+trim_trailing_whitespace = true
+
