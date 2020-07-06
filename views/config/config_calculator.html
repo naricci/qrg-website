@@ -32,12 +32,14 @@
 		<!-- JS -->
 		<script async src="../../js/jquery-3.4.1.min.js"></script>
 		<script defer src="../../js/navbar.js"></script>
+		<script defer src="../../js/calculator.js"></script>
 		<script defer src="../../js/clear.js"></script>
 		<!-- CSV processing and Database -->
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 		<style>
-			.box { border: 3px solid black; }
+			.box { border: 3px solid #000000; }
+			.input.is-medium.has-text-centered { border: 3px solid #000000 }
 		</style>
 	</head>
 
@@ -134,34 +136,36 @@
 						</div>
 						<ol>
 							<li>
-								Measure Height, Width, and Length (in feet).
+								Measure Height, Width, and Length (in feet). Round up to nearest whole number.
 							</li>
 							<li>
-								Input dimensions and press Calculate to view results. Press Clear to reset.
+								Input dimensions below and press Calculate to view results. Press Clear to reset.
 							</li>
 						</ol>
 					</div>
 
 					<br>
 
+					<div id="errorMsg" class="content is-medium has-text-centered has-text-weight-bold" style="display: none;"></div>
+
 					<div class="field is-horizontal">
 						<div class="field-body">
 							<div class="field">
-								<label class="label has-text-centered">Height</label>
+								<label class="label has-text-centered is-large has-text-black">Height</label>
 								<p class="control is-expanded">
 									<input class="input is-medium has-text-centered" type="number" id="H" placeholder="Height">
 								</p>
 							</div>
 
 							<div class="field">
-								<label class="label has-text-centered">Width</label>
+								<label class="label has-text-centered is-large has-text-black">Width</label>
 								<p class="control is-expanded">
 									<input class="input is-medium has-text-centered" type="number" id="W" placeholder="Width">
 								</p>
 							</div>
 
 							<div class="field">
-								<label class="label has-text-centered">Length</label>
+								<label class="label has-text-centered is-large has-text-black">Length</label>
 								<p class="control is-expanded">
 									<input class="input is-medium has-text-centered" type="number" id="L" placeholder="Length">
 								</p>
@@ -180,110 +184,13 @@
 						</div>
 					</div>
 
-					<br><br>
+					<br>
 
-					<div align="center" class="content is-medium" id="results"></div>
+					<div class="content is-medium has-text-centered" id="results">
+						<p style="color: red;">Please enter positive numbers for Height, Width, and Length.</p>
+					</div>
 				</div>
 			</div>
 		</section>
 	</body>
 </html>
-
-<script>
-	$(document).ready(function(){
-		$('#load_data').click(function(){
-			$.ajax({
-				url:"db.csv",
-				dataType:"text",
- 				success:function(data)
-				{
-					/*Here I create my variables that require me to either
-					* get things from the HTMl page or getting a file
-					* or for creating a table*/
-					let L = parseInt(document.querySelector("#L").value);
-					let W = parseInt(document.querySelector("#W").value);
-					let H = parseInt(document.querySelector("#H").value);
-					let database = data.split(/\r?\n|\r/);
-
-					/*
-						Here I make sure digits are positive
-					*/
-					let final_results = '<div class="content is-large">';
-					final_results += '<p class="has-text-danger">';
-					if ((L < 0) || (W < 0) || (H < 0))
-					{
-
-						final_results += "Please enter vaild numbers.";
-						final_results += '</p>';
-						final_results += '</div>';
-					}
-					else
-					{
-						/*Here I create local variables like A and B...*/
-						let A;
-						let B;
-						let x;
-						let y;
-
-						/*Here I perform the calculations for A and B...*/
-						A = 2*(H+2)+W+5;
-						B = 2*(H+2)+L+5;
-
-						/*Here I create my coordinates for X and Y,
-						* yea this Code is kinda redundant and I could have
-						* just used the A and B values but..
-						*  ¯\_(ツ)_/¯ ....*/
-						x = A;
-						y = B;
-
-						/*since the width and the Length of the data are the same
-						* I create a 2D array so that I can easily access the data like
-						* on an X and Y graph*/
-						let csv_data = new Array(database.length);
-						for (let i = 0; i < database.length; i++)
-						{
-							csv_data[i] = new Array(database.length)
-						}
-
-						/*Here I now store the data in the CSV file in a two-dimensional array.
-						* This way, using the coordinates, I can retrieve the data*/
-						for(let length = 0; length<database.length; length++)
-						{
-							let cell_data = database[length].split(",");
-							for(let width=0; width<cell_data.length; width++)
-							{
-								csv_data[length][width] = cell_data[width];
-							}
-
-						}
-
-						/*Here I do a couple more checks to make sure the X and Y
-						* are not greater than 181 which is the max Length and width
-						* of the file. I also prep the final_results variable so that the
-						* AJAX thing can do what it does..i only know so much about it.
-						* I can't really give technical details...yet.*/
-
-						if (x > 180 && y > 180)
-						{
-							final_results += "Please consult table in the <a href='typ_configs'> Typical Configurations</a> section.\nCustom configuration may be necessary.";
-							final_results += '</p>';
-							final_results += '</div>';
-						}
-						else
-						{
-							final_results += "Screen systems required:  ";
-							final_results += '<b>';
-							final_results += csv_data[x][y];
-							final_results += '</b>';
-							final_results += '</p>';
-							final_results += '</div>';
-						}
-					}
-
-					$('#results').html(final_results);
-				}
-			});
-		});
-
-	});
-</script>

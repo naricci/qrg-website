@@ -1,5 +1,8 @@
 ﻿// eslint-disable-next-line no-unused-vars
 function f()
 {
-	document.querySelector('#results').innerHTML =  '<h1 class="subtitle has-text-weight-bold is-2">' + 'Please Enter Lenght, Width and Height' + '</h1>';
+	document.querySelector('#H').value = null;
+	document.querySelector('#W').value = null;
+	document.querySelector('#L').value = null;
+	document.querySelector('#results').innerHTML = '<p class="subtitle has-text-weight-bold">' + 'Please enter Length, Width and Height' + '</p>';
 }
