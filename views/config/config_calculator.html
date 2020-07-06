@@ -36,6 +36,9 @@
 		<!-- CSV processing and Database -->
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+		<style>
+			.box { border: 3px solid black; }
+		</style>
 	</head>
 
 	<body>
@@ -121,12 +124,14 @@
 				<span> | </span>
 				<a href="config_list.html">Next</a>
 				<br><br>
-				
+
 				<div class="rows">
 					<div class="content is-medium">
-						<p class="has-text-centered">
-							<b>NOTE:</b> An ULCANS system consists of one hexagon screen and one rhombic screen.
-						</p>
+						<div class="box">
+							<p class="has-text-centered">
+								<b>NOTE:</b> An ULCANS system consists of one hexagon screen and one rhombic screen.
+							</p>
+						</div>
 						<ol>
 							<li>
 								Measure Height, Width, and Length (in feet).
@@ -159,11 +164,11 @@
 								<label class="label has-text-centered">Length</label>
 								<p class="control is-expanded">
 									<input class="input is-medium has-text-centered" type="number" id="L" placeholder="Length">
-								</p>	
+								</p>
 							</div>
-						</div>	
+						</div>
 					</div>
-					
+
 					<br>
 
 					<div class="field is-grouped">
@@ -199,7 +204,7 @@
 					let W = parseInt(document.querySelector("#W").value);
 					let H = parseInt(document.querySelector("#H").value);
 					let database = data.split(/\r?\n|\r/);
-					
+
 					/*
 						Here I make sure digits are positive
 					*/
@@ -207,12 +212,12 @@
 					final_results += '<p class="has-text-danger">';
 					if ((L < 0) || (W < 0) || (H < 0))
 					{
-						
+
 						final_results += "Please enter vaild numbers.";
 						final_results += '</p>';
 						final_results += '</div>';
 					}
-					else 
+					else
 					{
 						/*Here I create local variables like A and B...*/
 						let A;
@@ -257,7 +262,7 @@
 						* of the file. I also prep the final_results variable so that the
 						* AJAX thing can do what it does..i only know so much about it.
 						* I can't really give technical details...yet.*/
-						
+
 						if (x > 180 && y > 180)
 						{
 							final_results += "Please consult table in the <a href='typ_configs'> Typical Configurations</a> section.\nCustom configuration may be necessary.";
@@ -274,7 +279,7 @@
 							final_results += '</div>';
 						}
 					}
-					
+
 					$('#results').html(final_results);
 				}
 			});
