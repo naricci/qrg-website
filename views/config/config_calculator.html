@@ -69,9 +69,24 @@
 							<a class="navbar-link is-active" href="#">Configuration</a>
 
 							<div class="navbar-dropdown">
-								<a class="navbar-item" href="../config/typ_configs.html">Typical Configurations</a>
-								<a class="navbar-item is-active" href="../config/config_calculator.html">Configuration Calculator</a>
-								<a class="navbar-item" href="../config/config_list.html">Configuration List</a>
+								<a class="navbar-item" href="../config/typ_configs.html">
+									<span class="icon is-small">
+										<img src="../../images/icons/Icon_Configuration_120x120.png">
+									</span>
+									<span>&nbsp;Typical Configurations</span>
+								</a>
+								<a class="navbar-item is-active" href="../config/config_calculator.html">
+									<span class="icon is-small">
+										<img src="../../images/icons/Icon_Configuration_120x120.png">
+									</span>
+									<span>&nbsp;Configuration Calculator</span>
+								</a>
+								<a class="navbar-item" href="../config/config_list.html">
+									<span class="icon is-small">
+										<img src="../../images/icons/Icon_Configuration_120x120.png">
+									</span>
+									<span>&nbsp;Configuration List</span>
+								</a>
 							</div>
 						</div>
 
@@ -82,8 +97,18 @@
 							<a class="navbar-link" href="../procedures.html">Procedures</a>
 
 							<div class="navbar-dropdown">
-								<a class="navbar-item" href="../setup.html">Erect</a>
-								<a class="navbar-item" href="../tear_down.html">Strike</a>
+								<a class="navbar-item" href="../setup.html">
+									<span class="icon is-small">
+										<img src="../../images/icons/Icon_SetUp_120x120.png">
+									</span>
+									<span>&nbsp;Erect</span>
+								</a>
+								<a class="navbar-item" href="../tear_down.html">
+									<span class="icon is-small">
+										<img src="../../images/icons/Icon_TearDown_120x120.png">
+									</span>
+									<span>&nbsp;Strike</span>
+								</a>
 							</div>
 						</div>
 
@@ -91,9 +116,24 @@
 							<a class="navbar-link" href="../maintenance.html">Maintenance</a>
 
 							<div class="navbar-dropdown">
-								<a class="navbar-item" href="../maintenance.html">Screen Repair</a>
-                                <a class="navbar-item" href="../maintenance/maintain2.html">Becket Loop Repair</a>
-                                <a class="navbar-item" href="../maintenance/maintain3.html">PMCS</a>
+								<a class="navbar-item" href="../maintenance.html">
+									<span class="icon is-small">
+										<img src="../../images/icons/Icon_Maintenance_120x120.png">
+									</span>
+									<span>&nbsp;Screen Repair</span>
+								</a>
+								<a class="navbar-item" href="../maintenance/maintain2.html">
+									<span class="icon is-small">
+										<img src="../../images/icons/Icon_Lacing_120x120.png">
+									</span>
+									<span>&nbsp;Becket Loop Repair</span>
+								</a>
+								<a class="navbar-item" href="../maintenance/maintain3.html">
+									<span class="icon is-small">
+										<img src="../../images/icons/Icon_Maintenance_120x120.png">
+									</span>
+									<span>&nbsp;PMCS</span>
+								</a>
 							</div>
 						</div>
 
@@ -101,9 +141,24 @@
 							<a class="navbar-link" href="../references.html">References</a>
 
 							<div class="navbar-dropdown">
-								<a class="navbar-item" href="../references.html">Abbreviations & Acronyms</a>
-								<a class="navbar-item" href="../refs/r1.html">Documents</a>
-								<a class="navbar-item" href="../refs/r2.html">Safety Warnings</a>
+								<a class="navbar-item" href="../references.html">
+									<span class="icon is-small">
+										<img src="../../images/icons/Icon_References_120x120.png">
+									</span>
+									<span>&nbsp;Abbreviations & Acronyms</span>
+								</a>
+								<a class="navbar-item" href="../refs/r1.html">
+									<span class="icon is-small">
+										<img src="../../images/icons/Icon_References_120x120.png">
+									</span>
+									<span>&nbsp;Documents</span>
+								</a>
+								<a class="navbar-item" href="../refs/r2.html">
+									<span class="icon is-small">
+										<img src="../../images/icons/Icon_Safety_120x120.png">
+									</span>
+									<span>&nbsp;Safety Warnings</span>
+								</a>
 							</div>
 						</div>
 					</div>
@@ -177,17 +232,27 @@
 
 					<div class="field is-grouped">
 						<div class="control">
-							<button class="button is-dark" type="button" name="load_data" id="load_data">Calculate</button>
+							<button class="button is-dark" type="button" name="load_data" id="load_data">
+								<span>Calculate</span>
+								<span class="icon is-small">
+									<i class="fas fa-calculator" aria-hidden="true"></i>
+								</span>
+							</button>
 						</div>
 						<div class="control">
-							<button class="button is-danger" type="reset" id="reset" value="Reset" onclick="f()">Clear</button>
+							<button class="button is-danger" type="reset" id="reset" value="Reset" onclick="f()">
+								<span>Clear</span>
+								<span class="icon is-small">
+									<i class="fas fa-times" aria-hidden="true"></i>
+								</span>
+							</button>
 						</div>
 					</div>
 
 					<br>
 
 					<div class="content is-medium has-text-centered" id="results">
-						<p style="color: red;">Please enter positive numbers for Height, Width, and Length.</p>
+						<p class="has-text-weight-bold" style="color: red;">Please enter positive numbers for Height, Width, and Length.</p>
 					</div>
 				</div>
 			</div>
