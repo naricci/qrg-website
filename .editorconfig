@@ -9,7 +9,7 @@ root = true
 end_of_line = lf
 insert_final_newline = false
 
-[*.{js,json}]
+[*.{js,json,py}]
 charset = utf-8
 indent_style = tab
 indent_size = tab
@@ -25,7 +25,7 @@ tab_width = 4
 quote_type = double
 trim_trailing_whitespace = true
 
-[*.{css}]
+[*.{css,scss}]
 charset = utf-8
 indent_style = tab
 indent_size = 2

@@ -1,0 +1,23 @@
+@charset "UTF-8";
+.nested.dropdown:hover > .dropdown-menu {
+  display: block;
+}
+.nested.dropdown .dropdown-menu {
+  top: -15px;
+  margin-left: 100%;
+}
+.nested.dropdown .dropdown-trigger a::after {
+  content: "⦠";
+}
+.nested.dropdown .dropdown-trigger a {
+  padding: 0px 0px;
+  border: 0px;
+  font-size: 14px;
+  font-weight: 400;
+  height: 2em;
+}
+.erect {
+  border-top: 2px solid #dbdbdb;
+}
+
+/*# sourceMappingURL=navbar.css.map */

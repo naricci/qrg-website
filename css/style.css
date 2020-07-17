@@ -1,40 +1,35 @@
 html {
-    background-color: tan;
+	background-color: #D2B48C;
 }
-
 body {
-    color: #000000;
+	color: #000000;
 }
-
 ul {
-    list-style-type:square;
-    padding-left: 40px;
+	list-style-type: square;
+	padding-left: 40px;
 }
-
 p.navbar-item.has-text-black {
-    font-weight: bolder;
+	font-weight: bolder;
 }
-
 .button.is-rounded {
-    background-color: #000000;
-    font-weight: bold;
-    height: 75px;
-    width: 250px;
+	background-color: #000000;
+	font-weight: bold;
+	height: 75px;
+	width: 250px;
 }
-
 .menu-grid {
-    margin-top: auto;
-    margin-bottom: auto;
+	margin-top: auto;
+	margin-bottom: auto;
 }
-
 .menu-icon {
-    width: 120px;
+	width: 120px;
 }
-
 .subtitle {
-    color: #000000;
+	color: #000000;
 }
-
 #support-pole {
-    height: 500px;
+	height: 500px;
+}
+#footer {
+	background-color: #D2B48C;
 }
