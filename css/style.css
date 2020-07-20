@@ -3,6 +3,8 @@ html {
 }
 body {
 	color: #000000;
+	position: relative;
+  min-height: 100vh;
 }
 ul {
 	list-style-type: square;
