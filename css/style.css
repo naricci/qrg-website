@@ -4,7 +4,7 @@ html {
 body {
 	color: #000000;
 	position: relative;
-  min-height: 100vh;
+    min-height: 100vh;
 }
 ul {
 	list-style-type: square;
@@ -32,6 +32,7 @@ p.navbar-item.has-text-black {
 #support-pole {
 	height: 500px;
 }
-#footer {
-	background-color: #D2B48C;
+.footer {
+	/* background-color: #D2B48C; */
+	background-color: #ffffff;
 }
