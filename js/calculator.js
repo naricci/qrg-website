@@ -12,6 +12,8 @@ $(document).ready(function() {
 				let H = parseInt(document.querySelector('#H').value);
 				let W = parseInt(document.querySelector('#W').value);
 				let L = parseInt(document.querySelector('#L').value);
+				// let unitOfMeasure = document.querySelector('').value;
+				
 				let database = data.split(/\r?\n|\r/);
 
 				let final_results = '<p class="subtitle">';

@@ -40,6 +40,7 @@
 		<style>
 			.box { border: 3px solid #000000; }
 			.input.is-medium.has-text-centered { border: 3px solid #000000 }
+			#unit { border: 3px solid #000000 }
 		</style>
 	</head>
 
@@ -266,10 +267,10 @@
 						</div>
 						<ol>
 							<li>
-								Measure Height, Width, and Length (in feet). Round up to nearest whole number.
+								Measure Height, Width, and Length (in feet or meters). Round up to nearest whole number.
 							</li>
 							<li>
-								Input dimensions below and press Calculate to view results. Press Clear to reset.
+								Input dimensions below, select Feet or Meters, and press Calculate to view results. Press Clear to reset.
 							</li>
 						</ol>
 					</div>
@@ -298,6 +299,18 @@
 								<label class="label has-text-centered is-large has-text-black">Length</label>
 								<p class="control is-expanded">
 									<input class="input is-medium has-text-centered" type="number" id="L" placeholder="Length" />
+								</p>
+							</div>
+
+							<div class="field">
+								<label class="label has-text-centered is-large has-text-black">Unit of Measure</label>
+								<p class="control is-expanded">
+									<div class="select is-medium has-text-centered">
+										<select id="unit">
+											<option value="feet">Feet</option>
+											<option value="meters">Meters</option>
+										</select>
+									</div>
 								</p>
 							</div>
 						</div>
@@ -336,7 +349,7 @@
 		<div style="height: 150px;"></div>
 		<footer class="footer is-fixed-bottom" style="position: absolute; bottom: 0; width: 100%; height: 1rem;">
 			<div class="content has-text-centered">
-				<a href="http://fibrotexusa.com" target="_blank">
+				<a href="http://www.fibrotex-tech.com" target="_blank">
 					<img src="../../images/icons/fusa-logo.png" alt="Fibrotex company logo" />
 				</a>
 			</div>
