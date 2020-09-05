@@ -12,8 +12,8 @@ $(document).ready(function() {
 				let H = parseInt(document.querySelector('#H').value);
 				let W = parseInt(document.querySelector('#W').value);
 				let L = parseInt(document.querySelector('#L').value);
-				// let unitOfMeasure = document.querySelector('').value;
-				
+				// let unit = document.querySelector('select[name="unit"]').value;
+
 				let database = data.split(/\r?\n|\r/);
 
 				let final_results = '<p class="subtitle">';
@@ -25,6 +25,13 @@ $(document).ready(function() {
 				// Create local variables A, B, x, y.
 				else {
 					let A, B, x, y;
+
+					if (document.querySelector('select[name="unit"]').value === 'meters') {
+						H = parseInt(document.querySelector('#H').value) * 3.2808;
+						W = parseInt(document.querySelector('#W').value) * 3.2808;
+						L = parseInt(document.querySelector('#L').value) * 3.2808;
+					}
+					console.log(H);
 
 					// Perform the calculations for A and B.
 					A = 2 * (H + 2) + W + 5;
