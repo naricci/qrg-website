@@ -12,7 +12,6 @@ $(document).ready(function() {
 				let H = parseInt(document.querySelector('#H').value);
 				let W = parseInt(document.querySelector('#W').value);
 				let L = parseInt(document.querySelector('#L').value);
-				// let unit = document.querySelector('select[name="unit"]').value;
 
 				let database = data.split(/\r?\n|\r/);
 
@@ -37,7 +36,6 @@ $(document).ready(function() {
 						W = parseInt(document.querySelector('#W').value);
 						L = parseInt(document.querySelector('#L').value);
 					}
-					console.log(H + ' - ' + W + ' - ' + L);
 
 					// Perform the calculations for A and B.
 					A = 2 * (H + 2) + W + 5;
