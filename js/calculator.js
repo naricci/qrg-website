@@ -40,6 +40,8 @@ $(document).ready(function() {
 					// Perform the calculations for A and B.
 					A = 2 * (H + 2) + W + 5;
 					B = 2 * (H + 2) + L + 5;
+					console.log('A = ' + A);
+					console.log('B = ' + B);
 
 					// Create coordinates for X and Y.
 					x = A;
@@ -78,7 +80,7 @@ $(document).ready(function() {
 						final_results += 'Please consult table in the <a href="typ_configs.html">Typical Configurations</a>' + ' section.\nCustom configuration may be necessary.';
 						final_results += '</p>';
 					} else if (x <= 15 && y <= 15) final_results += 'Screen systems required: <b style="color: blue;">1 Rhombus</b>.</p>';
-					else if (x <= 29 && y <= 29) final_results += 'Screen systems required: <b style="color: blue;">1 Octagon</b>.</p>';
+					// else if (x <= 29 && y <= 29) final_results += 'Screen systems required: <b style="color: blue;">1 Octagon</b>.</p>';
 					else {
 						final_results += 'Screen systems required: <b style="color: blue;">';
 						final_results += csv_data[x][y];
