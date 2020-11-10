@@ -22,16 +22,22 @@ $(document).ready(function() {
 				if (H <= 0 || W <= 0 || L <= 0) final_results = '<p class="subtitle" style="color: red;">Please enter positive numbers for Height, Width, and Length.</p>';
 				else if (H === undefined || W === undefined || L === undefined) final_results = '<p class="subtitle" style="color: red;">Please enter positive numbers for Height, Width, and Length.</p>';
 				else if (H === null || W === null || L === null) final_results = '<p class="subtitle" style="color: red;">Please class="subtitle" style="color: red;">Please enter positive numbers for Height, Width, and Length.</p>';
+
 				// Create local variables A, B, x, y.
 				else {
 					let A, B, x, y;
 
 					if (document.querySelector('select[name="unit"]').value === 'meters') {
-						H = parseInt(document.querySelector('#H').value) * 3.2808;
-						W = parseInt(document.querySelector('#W').value) * 3.2808;
-						L = parseInt(document.querySelector('#L').value) * 3.2808;
+						H = Math.round(parseInt(document.querySelector('#H').value) * 3.2808);
+						W = Math.round(parseInt(document.querySelector('#W').value) * 3.2808);
+						L = Math.round(parseInt(document.querySelector('#L').value) * 3.2808);
 					}
-					console.log(H);
+					else {
+						H = parseInt(document.querySelector('#H').value);
+						W = parseInt(document.querySelector('#W').value);
+						L = parseInt(document.querySelector('#L').value);
+					}
+					console.log(H + ' - ' + W + ' - ' + L);
 
 					// Perform the calculations for A and B.
 					A = 2 * (H + 2) + W + 5;
